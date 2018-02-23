@@ -1,5 +1,5 @@
 import java.awt.Color;
-
+import java.util.Random;
 /**
  * Class BallDemo - a short demonstration showing animation with the 
  * Canvas class. 
@@ -35,8 +35,17 @@ public class BallDemo
         // draw the ground
         myCanvas.drawLine(50, ground, 550, ground);
 
+        Random aleatorio = new Random();
         for(int i = 0; i < numberOfBalls; i++) {
-            BouncingBall ball = new BouncingBall(50 + (10 * i), 50, 10, Color.BLUE, ground, myCanvas);
+           
+            int radios = aleatorio.nextInt(20) + 5;
+            int red = aleatorio.nextInt(256);
+            int green = aleatorio.nextInt(256);
+            int blue = aleatorio.nextInt(256);
+            
+            Color color = new Color(red, green, blue);
+            
+            BouncingBall ball = new BouncingBall(50 + (10 * i), 50, radios, color, ground, myCanvas);
             ball.draw();
             myBalls[i] = ball;
         }
